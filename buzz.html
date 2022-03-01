@@ -16,9 +16,13 @@
 <body>
     <h1 class="text-center"> <span class="text-info">Phone</span> <span class="text-danger">Buzz</span></h1>
     <div class="input-group mb-3 container w-50 bg-info p-3 rounded">
-        <input type="text" class="form-control" placeholder="Phone's name..." aria-label="Recipient's username"
+        <input id="input-value" type="text" class="form-control" placeholder="Phone's name..." aria-label="Recipient's username"
             aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary text-white" type="button" id="button-addon2">Search Now</button>
+        <button onclick="searchButton()" class="btn btn-outline-secondary text-white fw-bolder" type="button" id="button-addon2">Search Now</button>
+    </div>
+
+    <div id="parent-container" class="phones-container row">
+        
     </div>
 
 
