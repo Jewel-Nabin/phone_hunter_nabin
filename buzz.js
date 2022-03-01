@@ -15,12 +15,12 @@ const phonesDisplay = (phones) => {
         div.classList.add("col-lg-4");
         div.innerHTML = 
             `<div class="card border p-5 mb-5">
-                    <img src="${data.image}" class="card-img-top h-50 w-75" alt="...">
+                    <img src="${data.image}" class="card-img-top h-100 w-25" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${data.phone_name}</h5>
                     <p class="card-text">${data.brand}</p>
                     <div class="details-button">
-                        <button class="btn btn-danger">Details</button>
+                        <button onclick="phoneDetails('${data.slug}')" class="btn btn-danger">Details</button>
                     </div>
                 </div>
             </div>
@@ -28,17 +28,28 @@ const phonesDisplay = (phones) => {
         parent.appendChild(div);
         // console.log(data);
     };
-    // console.log(phones);
 };
 
-/* `<div class="card border p-5 mb-5">
-            <div class="phone-image">
-                <img class="w-50" src="${data.image}" alt="">
+    /* ===========================================
+                     Details
+    =========================================== */
+
+const phoneDetails = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+        .then(res => res.json())
+        .then(data => setDetails(data));
+        // .then(data => console.log(data));
+
+};
+
+const setDetails = (info) => {
+    document.getElementById('details-container').innerHTML =
+        `<div class="card border p-5 mb-5 container">
+                    <img class="img-thumbnail w-50 h-100" src="${info.data.image}" class="card-img-top h-50 w-75" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${info.data.name}</h5>
+                    <p class="card-text">${info.data.releaseDate}</p>
+                </div>
             </div>
-            <h2>Phone Name: </h2>
-            <h5>Brand Name: </h5>
-            <div class="details-button">
-                <button class="btn btn-danger">Details</button>
-            </div>
-        </div>
-        `; */
+        `;
+};
