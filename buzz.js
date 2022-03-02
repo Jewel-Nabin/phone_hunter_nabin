@@ -41,7 +41,7 @@ const phoneDetails = (id) => {
 
 };
 
-// set details part
+// set details
 const setDetails = (info) => {
     document.getElementById('details-container').innerHTML =
         `<div class="card border p-5 mb-5 container">
